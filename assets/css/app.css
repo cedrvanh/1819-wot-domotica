@@ -1,0 +1,87 @@
+:root {
+    --base-font: 'Open Sans', sans-serif;
+    --shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    --grid-width: 960px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: var(--base-font);
+}
+
+.container {
+    width: 100%;
+    max-width: var(--grid-width);
+    margin: 0 auto;
+    padding: 0 1.6rem;
+
+}
+.full-width {
+    width: 100vw;
+    height: 100vh;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 350px;
+    /* box-shadow: var(--shadow); */
+    border-radius: 8px;
+    padding: 1.6rem 3.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 1.6rem 0;
+}
+
+.form-control {
+    /* box-shadow: var(--shadow); */
+    background-color: rgba(200, 200, 200, 0.15);
+    margin-top: 0.8rem;
+    padding: 1rem 0.8rem;
+}
+
+.grid {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    width: 700px;
+    height: 700px;
+}
+
+.cell {
+    width: calc(12.5% - 4px);
+    height: calc(12.5% - 4px);
+    margin: 2px;
+    box-sizing: content-box;
+    background-color: lightgrey;
+}
+
+.cell:hover {
+    background-color: grey;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+h1 {
+    margin: 1rem 0;
+}
