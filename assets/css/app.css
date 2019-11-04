@@ -2,6 +2,10 @@
     --base-font: 'Open Sans', sans-serif;
     --shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
     --grid-width: 960px;
+    --gutter: 16px;
+    --radius: 8px;
+    --primary-color: #2B384E;
+    --secondary-color: #22BAA0;
 }
 
 * {
@@ -14,6 +18,32 @@ html, body {
     font-family: var(--base-font);
 }
 
+input {
+    outline: none;
+    border: none;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--gutter);
+    border-bottom: 2px solid rgb(236, 236, 236);
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .container {
     width: 100%;
     max-width: var(--grid-width);
@@ -22,6 +52,7 @@ html, body {
 
 }
 .full-width {
+    max-width: 100%;
     width: 100vw;
     height: 100vh;
 }
@@ -41,20 +72,32 @@ html, body {
     max-width: 350px;
     /* box-shadow: var(--shadow); */
     border-radius: 8px;
-    padding: 1.6rem 3.2rem;
+    margin: var(--gutter);
 }
 
-.form-group {
+.nav {
     display: flex;
-    flex-direction: column;
-    margin: 1.6rem 0;
 }
 
-.form-control {
-    /* box-shadow: var(--shadow); */
-    background-color: rgba(200, 200, 200, 0.15);
-    margin-top: 0.8rem;
-    padding: 1rem 0.8rem;
+.nav__item {
+    margin-left: var(--gutter);
+}
+
+.btn {
+    width: 100%;
+    padding: 13px;
+    border-radius: var(--radius);
+    color: #fff;
+    text-align: center;
+    transition: all .3s ease;
+}
+
+.btn--primary {
+    background-color: var(--secondary-color);
+}
+
+.btn--primary:hover {
+    background-color: rgb(31, 170, 147);
 }
 
 .grid {
@@ -77,11 +120,16 @@ html, body {
     background-color: grey;
 }
 
-input {
-    outline: none;
-    border: none;
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 1.6rem 0;
 }
 
-h1 {
-    margin: 1rem 0;
+.form-control {
+    /* box-shadow: var(--shadow); */
+    background-color: rgba(200, 200, 200, 0.15);
+    margin-top: var(--gutter);
+    padding: var(--gutter);
+    border-radius: var(--radius);
 }

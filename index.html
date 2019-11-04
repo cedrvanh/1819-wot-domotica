@@ -7,9 +7,23 @@
     <title>Home | Domotica</title>
     <!-- Import Styling -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css">
     <link href="assets/css/app.css" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <h2 class="brand">Smart Home Pi</h2>
+        <nav>
+            <ul class="nav">
+                <li class="nav__item">
+                    <a href="#">Admin</a>   
+                </li>
+                <li class="nav__item">
+                    <a href="#" id="logOutBtn">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <main class="full-width flex-center">
         <section class="grid">
         </section>
@@ -19,6 +33,5 @@
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
 <!-- Import JS files --> 
 <script src="assets/js/utils.js"></script>
-<script src="assets/js/auth.js"></script>
 <script src="assets/js/app.js"></script>
 </html>

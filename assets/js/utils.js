@@ -1,4 +1,4 @@
-initFirebase = () => {
+const initFirebase = () => {
     const firebaseConfig = {
         apiKey: "AIzaSyDJ6pVkRjHFLrTtiMf7YA3TBHS1hJhcvPw",
         authDomain: "pi-domotica-7f748.firebaseapp.com",
@@ -13,6 +13,18 @@ initFirebase = () => {
     firebase.initializeApp(firebaseConfig);
 }
 
-redirectToRoute = (route) => {
+const redirectToRoute = (route) => {
     window.location.href = route;
+}
+
+const setLocalStorageItem = (key, data) => {
+    window.localStorage.setItem(key, data);
+} 
+
+const getLocalStorageItem = (key) => {
+    return window.localStorage.getItem(key);
+}
+
+const removeLocalStorageItem = (key) => {
+    window.localStorage.removeItem(key);
 }
