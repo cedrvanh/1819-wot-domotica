@@ -6,29 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home | Domotica</title>
     <!-- Import Styling -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
     <link href="assets/css/app.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h2 class="brand">Smart Home Pi</h2>
-        <nav>
-            <ul class="nav">
-                <li class="nav__item">
-                    <a href="#">Admin</a>   
-                </li>
-                <li class="nav__item">
-                    <a href="#" id="logOutBtn">Logout</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main class="full-width flex-center">
-        <section class="grid">
+    <main class="container flex-center">
+        <header>
+            <div class="brand">
+                <i class="icon" data-feather="home"></i>
+                <h1>Smart Home</h1>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav__item">
+                        <a href="#" id="logOutBtn">Sign Out</a>
+                        <i class="icon" data-feather="log-out"></i>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section class="dashboard">
         </section>
     </main>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <!-- Import Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
 <!-- Import JS files --> 

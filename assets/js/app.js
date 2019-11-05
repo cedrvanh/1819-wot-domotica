@@ -2,6 +2,8 @@ const init = () => {
     console.log('Initializing app..');
     initFirebase();
 
+    feather.replace()
+
     console.log('Generating 8x8 grid..');
     generateGrid(8);
 }
