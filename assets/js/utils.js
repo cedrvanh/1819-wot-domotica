@@ -28,3 +28,10 @@ const getLocalStorageItem = (key) => {
 const removeLocalStorageItem = (key) => {
     window.localStorage.removeItem(key);
 }
+
+const getUserLocalTime = () => {
+    const now = new Date();
+    const time = now.getHours();
+
+    return time;
+}

@@ -34,7 +34,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--gutter);
+    padding: var(--gutter) 0;
     color: var(--primary-color);
 }
 
@@ -84,8 +84,8 @@ a {
     align-items: center;
 }
 
-.brand h1 {
-    margin-left: var(--gutter);
+.brand .icon {
+    margin-right: var(--gutter);
 }
 
 .nav {
@@ -95,11 +95,11 @@ a {
 .nav__item {
     display: flex;
     align-items: center;
-    font-size: 20px;
+    font-size: 22px;
 }
 
-.nav__item a{
-    margin-right: var(--gutter);
+.nav__item .icon{
+    margin-left: var(--gutter);
 }
 
 .icon {
@@ -135,4 +135,25 @@ a {
     margin-top: var(--gutter);
     padding: var(--gutter);
     border-radius: var(--radius);
+}
+
+.dashboard {
+    padding: 150px 0px;
+}
+
+.dashboard__title {
+    font-size: 48px;
+}
+
+.text-light {
+    font-weight: 300;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid__item {
+    flex: 1;
 }

@@ -5,7 +5,9 @@ const init = () => {
     feather.replace()
 
     console.log('Generating 8x8 grid..');
-    generateGrid(8);
+    // generateGrid(8);
+
+    renderGreeting();
 }
 
 const generateGrid = (count) => {
@@ -18,6 +20,25 @@ const generateGrid = (count) => {
             grid.appendChild(cell);
         }
     }
+}
+
+/*
+** Render greeting based on Time
+*/
+const renderGreeting = () => {
+    const element = document.querySelector('.greeting');
+    const currentTime = getUserLocalTime();
+    let greeting;
+
+    if (currentTime < 12) {
+        greeting = "Goedemorgen"
+    } else if (currentTime >= 12 && currentTime <= 17) {
+        greeting = "Goedemiddag"
+    } else {
+        greeting = "Goedenavond"
+    }
+
+    element.innerHTML = greeting;
 }
 
 const onLogin = async () => { 
