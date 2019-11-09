@@ -6,6 +6,7 @@
     --radius: 8px;
     --primary-color: #4242E2;
     --background-color: #F4F6F9;
+    --text-color-light: #8E8E8E;
 }
 
 * {
@@ -103,7 +104,7 @@ a {
 }
 
 .icon {
-    stroke-width: 3px;
+    /* stroke-width: 3px; */
 }
 
 .btn {
@@ -137,6 +138,11 @@ a {
     border-radius: var(--radius);
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .dashboard {
     padding: 150px 0px;
 }
@@ -145,15 +151,58 @@ a {
     font-size: 48px;
 }
 
+.dashboard__sensors {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: var(--gutter);
+}
+
+.dashboard__sensor-item {
+    margin-right: 32px;
+    
+}
+
+.dashboard__sensor-item > span {
+    color: var(--text-color-light);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.dashboard__sensor-item h2 {
+    font-weight: 300;
+    font-size: 36px;
+}
+
+.dashboard__devices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px;
+}
+
+.device-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+    padding: 2rem 4rem;
+    border-radius: var(--radius);
+}
+
+.device-card .icon {
+    width: 36px;
+    height: 36px;
+}
+
+.device-card__title {
+    margin-top: var(--gutter);
+}
+
+.device-card__status {
+    text-transform: uppercase;
+}
+
 .text-light {
     font-weight: 300;
 }
 
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.grid__item {
-    flex: 1;
-}

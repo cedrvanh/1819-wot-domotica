@@ -25,9 +25,59 @@
                 </ul>
             </nav>
         </header>
-        <section class="dashboard grid">
+        <section class="grid dashboard">
             <div class="grid__item">
                 <h1 class="dashboard__title"><span class="greeting text-light"></span> Cedric</h1>
+                <section class="dashboard__sensors">
+                    <div class="dashboard__sensor-item">
+                        <span>Temp.</span>
+                        <h2>
+                            <i class="icon" data-feather="thermometer"></i>
+                            <span id="temperature"></span>
+                        </h2>
+                    </div>
+                    <div class="dashboard__sensor-item">
+                        <span>Humid.</span>
+                        <h2>
+                            <i class="icon" data-feather="droplet"></i>
+                            <span id="humidity"></span>
+                        </h2>
+                    </div>
+                </section>
+            </div>
+            <div class="grid__item">
+                <section class="dashboard__devices">
+                        <div class="device-card" data-device="lights">
+                            <i class="icon" data-feather="clock"></i>
+                            <h3 class="device-card__title">Lighting</h3>
+                            <span class="device-card__status">Off</span>
+                        </div>
+                        <div class="device-card" data-device="outlets">
+                            <i class="icon" data-feather="battery"></i>
+                            <h3 class="device-card__title">Outlets</h3>
+                            <span class="device-card__status">Off</span>
+                        </div>
+                        <div class="device-card" data-device="doors">
+                            <i class="icon" data-feather="box"></i>
+                            <h3 class="device-card__title">Doors</h3>
+                            <span class="device-card__status">Off</span>
+                        </div>
+                        <div class="device-card">
+                            <i class="icon" data-feather="cloud"></i>
+                            <h3 class="device-card__title">Windows</h3>
+                            <span class="device-card__status">Off</span>
+                        </div>
+                        <div class="device-card">
+                            <i class="icon" data-feather="droplet"></i>
+                            <h3 class="device-card__title">Water</h3>
+                            <span class="device-card__status">Off</span>
+                        </div>
+                        <div class="device-card">
+                            <i class="icon" data-feather="headphones"></i>
+                            <h3 class="device-card__title">Radio</h3>
+                            <span class="device-card__status">Off</span>
+                        </div>
+                </section>
             </div>
         </section>
     </main>
@@ -35,6 +85,8 @@
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <!-- Import Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
 <!-- Import JS files --> 
 <script src="assets/js/utils.js"></script>
 <script src="assets/js/app.js"></script>

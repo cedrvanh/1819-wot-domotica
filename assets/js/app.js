@@ -1,13 +1,14 @@
+// Init firebase
+initFirebase();
+
+// Global declarations
+const db = firebase.firestore();
+
 const init = () => {
     console.log('Initializing app..');
-    initFirebase();
-
-    feather.replace()
-
-    console.log('Generating 8x8 grid..');
-    // generateGrid(8);
-
+    feather.replace();
     renderGreeting();
+    updateSensors();
 }
 
 const generateGrid = (count) => {
@@ -22,22 +23,39 @@ const generateGrid = (count) => {
     }
 }
 
-/*
-** Render greeting based on Time
-*/
+const updateSensors = () => {
+    const temperatureNode = document.querySelector('#temperature'); 
+    const humidityNode = document.querySelector('#humidity'); 
+    const sensorsRef = db.collection('sensors');
+
+    // Set Temperature Data from Firebase Firestore
+    sensorsRef.doc('temperature').get()
+        .then(doc => {
+            const { value, unit } = doc.data();
+            temperatureNode.innerHTML = `${value}${unit}`;
+        })
+    
+    // Set Humidity Data from Firebase Firestore
+    sensorsRef.doc('humidity').get()
+        .then(doc => {
+            const { value, unit } = doc.data();
+            humidityNode.innerHTML = `${value}${unit}`;
+        })
+}
+
 const renderGreeting = () => {
     const element = document.querySelector('.greeting');
     const currentTime = getUserLocalTime();
     let greeting;
 
     if (currentTime < 12) {
-        greeting = "Goedemorgen"
+        greeting = "Goedemorgen";
     } else if (currentTime >= 12 && currentTime <= 17) {
-        greeting = "Goedemiddag"
+        greeting = "Goedemiddag";
     } else {
-        greeting = "Goedenavond"
+        greeting = "Goedenavond";
     }
-
+    
     element.innerHTML = greeting;
 }
 
@@ -73,4 +91,4 @@ if(logOutBtn) {
     logOutBtn.addEventListener('click', onLogOut);
 }
 
-window.addEventListener('load', init);
+init();
