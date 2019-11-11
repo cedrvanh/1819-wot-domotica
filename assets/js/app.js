@@ -3,12 +3,17 @@ initFirebase();
 
 // Global declarations
 const db = firebase.firestore();
+const deviceRef = db.collection('devices');
+const sensorsRef = db.collection('sensors');
+const devices = ['lights', 'outlets', 'front-door', 'back-door'];
+const sensors = ['temperature', 'humidity'];
 
 const init = () => {
     console.log('Initializing app..');
     feather.replace();
     renderGreeting();
-    updateSensors();
+    initDevices();
+    initSensors();
 }
 
 const generateGrid = (count) => {
@@ -23,24 +28,67 @@ const generateGrid = (count) => {
     }
 }
 
-const updateSensors = () => {
-    const temperatureNode = document.querySelector('#temperature'); 
-    const humidityNode = document.querySelector('#humidity'); 
-    const sensorsRef = db.collection('sensors');
+const initSensors = () => {
+    // Iterate through sensor array and update values
+    sensors.forEach(sensor => {
+        updateSensor(sensor);
+    })
+}
 
-    // Set Temperature Data from Firebase Firestore
-    sensorsRef.doc('temperature').get()
-        .then(doc => {
-            const { value, unit } = doc.data();
-            temperatureNode.innerHTML = `${value}${unit}`;
-        })
+const updateSensor = (sensor) => {
+    const sensorNode = document.querySelector(`#${sensor}`); 
     
-    // Set Humidity Data from Firebase Firestore
-    sensorsRef.doc('humidity').get()
+    // Retrieve and set sensor data from Firestore
+    sensorsRef.doc(sensor).get()
         .then(doc => {
             const { value, unit } = doc.data();
-            humidityNode.innerHTML = `${value}${unit}`;
+            sensorNode.innerHTML = `${value}${unit}`;
         })
+}
+
+const initDevices = () => {
+    devices.forEach(device => {
+        const elementNode = document.querySelector(`#${device}Toggle`);
+        
+        elementNode.addEventListener('click', (e) => {
+            updateDevice(device);
+        })
+    })
+}
+
+const pushDeviceState = (device, isActive) => {
+    const elementNode = document.querySelector(`#${device}Toggle`);
+
+    deviceRef.doc(device).update({
+        isActive: !isActive
+    })
+}
+
+const updateDevice = (device) => {
+    deviceRef.doc(device).get()
+        .then(doc => {
+            const { isActive } = doc.data();
+            updateDeviceClass(device, isActive);
+            updateDeviceLabel(device, isActive);
+        });
+}
+
+const updateDeviceLabel = (device, isActive) => {
+    const labelNode = document.querySelector(`#${device}Toggle .device-card__status`);
+    let status;  
+
+    isActive ? status = 'ON' : status = 'OFF';
+    labelNode.innerHTML = status;
+}
+
+const updateDeviceClass = (device, isActive) => {
+    const elementNode = document.querySelector(`#${device}Toggle`);
+
+    if(isActive) {
+        elementNode.classList.add('active');
+    } else {
+        elementNode.classList.remove('active');
+    }
 }
 
 const renderGreeting = () => {
@@ -59,6 +107,10 @@ const renderGreeting = () => {
     element.innerHTML = greeting;
 }
 
+
+/*
+ Auth
+*/
 const onLogin = async () => { 
     const email = document.querySelector('#email');
     const password = document.querySelector('#password');

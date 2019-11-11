@@ -189,6 +189,11 @@ a {
     border-radius: var(--radius);
 }
 
+.device-card.active {
+    background-color: var(--primary-color);
+    color: #FFF;
+}
+
 .device-card .icon {
     width: 36px;
     height: 36px;
