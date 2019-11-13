@@ -60,7 +60,6 @@ def get_color_by_device(device, status):
         else:
             return off
 
-
 # Populate pixels on LED matrix
 def populate_pixels(arr, color = [0, 0, 0]):
     for pos in arr:

@@ -100,17 +100,17 @@ const pushDeviceState = (device) => {
         })
 }
 
-const renderGreeting = () => {
+const renderGreeting = (name) => {
     const element = document.querySelector('.greeting');
     const currentTime = getUserLocalTime();
     let greeting;
 
     if (currentTime < 12) {
-        greeting = "Goedemorgen";
+        greeting = `Goedemorgen ${name}`;
     } else if (currentTime >= 12 && currentTime <= 17) {
-        greeting = "Goedemiddag";
+        greeting = `Goedemiddag ${name}`;
     } else {
-        greeting = "Goedenavond";
+        greeting = `Goedenavond ${name}`;
     }
     
     element.innerHTML = greeting;
@@ -141,10 +141,20 @@ const onLogOut = () => {
     redirectToRoute('/login.html');
 }
 
+
+firebase.auth().onAuthStateChanged(user => {
+    if(user) {
+        renderGreeting(user.displayName);
+    } else {
+       redirectToRoute('/login.html');
+    }
+})
+  
 const loginBtn = document.querySelector('#loginBtn');
 const logOutBtn = document.querySelector('#logOutBtn');
 
 if(loginBtn) {
+    console.log(loginBtn);
     loginBtn.addEventListener('click', onLogin);
 }
 

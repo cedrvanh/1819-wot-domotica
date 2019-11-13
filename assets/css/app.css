@@ -59,7 +59,7 @@ a {
 .full-width {
     max-width: 100%;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 75px);
 }
 
 .flex {
@@ -103,10 +103,6 @@ a {
     margin-left: var(--gutter);
 }
 
-.icon {
-    /* stroke-width: 3px; */
-}
-
 .btn {
     width: 100%;
     padding: 13px;
@@ -117,11 +113,11 @@ a {
 }
 
 .btn--primary {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 
 .btn--primary:hover {
-    background-color: rgb(31, 170, 147);
+    background-color: rgb(47, 47, 172);
 }
 
 .form-group {
@@ -185,7 +181,7 @@ a {
     align-items: center;
     justify-content: center;
     background-color: #FFF;
-    padding: 2rem 4rem;
+    padding: 2rem;
     border-radius: var(--radius);
     cursor: pointer;
 }

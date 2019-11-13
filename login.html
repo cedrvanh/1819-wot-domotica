@@ -12,37 +12,34 @@
     
 </head>
 <body>
-    <header>
-        <h2 class="brand">Smart Home Pi</h2>
-        <nav>
-            <ul class="nav">
-                <li class="nav__item">
-                    <a href="#">Admin</a>   
-                </li>
-                <li class="nav__item">
-                    <a href="#">Logout</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main class="full-width flex-center">
-        <section class="wrapper">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-control" id="email" type="text" placeholder="Username" value="test@example.com" /> 
+    <main class="container">
+        <header>
+            <div class="brand">
+                <i class="icon" data-feather="home"></i>
+                <h1>Smart Home</h1>
             </div>
-            <div class="form-group">
-                <label for="username">Password</label>
-                <input class="form-control" id="password" type="password" placeholder="Password"  value="test123" />
-            </div>
-            <div class="form-group">
-                <a href="#" class="btn btn--primary" id="loginBtn">Sign In</a>
-            </div>
-        </section>
+        </header>
+        <main class="full-width flex-center">
+            <section class="wrapper">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" id="email" type="text" placeholder="Username" value="test@example.com" /> 
+                </div>
+                <div class="form-group">
+                    <label for="username">Password</label>
+                    <input class="form-control" id="password" type="password" placeholder="Password"  value="test123" />
+                </div>
+                <div class="form-group">
+                    <a href="#" class="btn btn--primary" id="loginBtn">Sign In</a>
+                </div>
+            </section>
+        </main>
     </main>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <!-- Import Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
 <!-- Import JS files --> 
 <script src="assets/js/utils.js"></script>
