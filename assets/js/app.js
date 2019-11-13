@@ -116,6 +116,24 @@ const renderGreeting = (name) => {
     element.innerHTML = greeting;
 }
 
+const playAlarm = () => {
+    const alarm = new Audio('./assets/audio/alarm.mp3');
+    alarm.volume = 0.3;
+    alarm.play();
+
+    deviceRef.doc("lights").set({
+        isActive: true
+    })
+
+    deviceRef.doc("front-door").set({
+        isActive: true
+    })
+
+    deviceRef.doc("back-door").set({
+        isActive: true
+    })
+}
+
 /*
  Auth
 */
@@ -154,6 +172,7 @@ firebase.auth().onAuthStateChanged(user => {
   
 const loginBtn = document.querySelector('#loginBtn');
 const logOutBtn = document.querySelector('#logOutBtn');
+const alarmBtn = document.querySelector('#alarmBtn');
 
 if(loginBtn) {
     console.log(loginBtn);
@@ -162,6 +181,10 @@ if(loginBtn) {
 
 if(logOutBtn) {
     logOutBtn.addEventListener('click', onLogOut);
+}
+
+if(alarmBtn) {
+    alarmBtn.addEventListener('click', playAlarm);
 }
 
 init();

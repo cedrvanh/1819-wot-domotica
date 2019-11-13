@@ -6,6 +6,7 @@
     --radius: 8px;
     --primary-color: #4242E2;
     --background-color: #F4F6F9;
+    --danger-color: rgba(209, 58, 58);
     --text-color-light: #8E8E8E;
 }
 
@@ -75,7 +76,6 @@ a {
 .wrapper {
     width: 100%;
     max-width: 350px;
-    /* box-shadow: var(--shadow); */
     border-radius: 8px;
     margin: var(--gutter);
 }
@@ -118,6 +118,14 @@ a {
 
 .btn--primary:hover {
     background-color: rgb(47, 47, 172);
+}
+
+.btn--danger {
+    background-color: var(--danger-color);
+}
+
+.btn--danger:hover {
+    background-color: rgb(167, 39, 39);
 }
 
 .form-group {
@@ -202,6 +210,10 @@ a {
 
 .device-card__status {
     text-transform: uppercase;
+}
+
+.button-group {
+    margin-top: 50px;
 }
 
 .text-light {
