@@ -168,6 +168,8 @@ firebase.auth().onAuthStateChanged(user => {
         if(!token) {
             redirectToRoute('/1819-wot-domotica/login.html')
         }
+    } else {
+        redirectToRoute('/1819-wot-domotica/login.html')
     }
 })
   
