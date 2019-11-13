@@ -146,7 +146,7 @@ const onLogin = async () => {
             // Set Unique User ID in LocalStorage
             setLocalStorageItem('uuid', res.user.uid);
             // Redirect to Home after succesful login
-            redirectToRoute('1819-wot-domotica/');
+            redirectToRoute('/1819-wot-domotica/');
         })
         .catch(err => {
             console.log(err);
@@ -155,7 +155,7 @@ const onLogin = async () => {
 
 const onLogOut = () => {
     removeLocalStorageItem('uuid');
-    redirectToRoute('1819-wot-domotica/login.html');
+    redirectToRoute('/1819-wot-domotica/login.html');
 }
 
 
@@ -166,7 +166,7 @@ firebase.auth().onAuthStateChanged(user => {
         const token = getLocalStorageItem('uuid');
         console.log(token);
         if(!token) {
-            redirectToRoute('1819-wot-domotica/login.html')
+            redirectToRoute('/1819-wot-domotica/login.html')
         }
     }
 })
