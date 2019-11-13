@@ -6,7 +6,7 @@ Smart Home application that connects to a Pi and reads / writes data [Live](http
 - pass: test123
 
 ### Author
-Cedric Vanhaegenberg [Github](https://github.com/cedrvanh)
+- Cedric Vanhaegenberg [Github](https://github.com/cedrvanh)
 
 ### Made for the course Web of Things
 Lecturer:
