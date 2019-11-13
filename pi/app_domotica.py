@@ -2,6 +2,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 from sense_hat import SenseHat
+import time 
 
 # Create instance of SenseHat
 sense = SenseHat()
@@ -14,6 +15,9 @@ firebase_admin.initialize_app(cred)
 
 # Create instance of Firestore
 db = firestore.client()
+
+# Define devices from DB
+devices = ['lights', 'outlets', 'front-door', 'back-door']
 
 # Update sensor data to DB
 def update_sensors():
@@ -62,24 +66,38 @@ def populate_pixels(arr, color = [0, 0, 0]):
     for pos in arr:
         sense.set_pixel(pos[0], pos[1], color)
 
-# Update LED matrix 
-def update_matrix(doc):
-    # Define device positions on matrix
+# Update Lights LED matrix 
+def update_lights_matrix(doc):
     lightsPos = [(2, 0), (5, 0), (2, 4), (5, 4)]
+    populate_pixels(lightsPos, get_color_by_device('lights', doc['isActive']))
+
+# Update Outlets LED matrix 
+def update_outlets_matrix(doc):
     outletsPos = [(0, 3), (7, 3), (3, 7), (4, 7)]
+    populate_pixels(outletsPos, get_color_by_device('outlets', doc['isActive']))
+
+# Update Doors LED matrix 
+def update_doors_matrix(doc):
     fDoorPos = [(0, 5), (0, 6), (0, 7)]
     bDoorPos = [(7, 5), (7, 6), (7, 7)]
+    populate_pixels(fDoorPos,  get_color_by_device('fDoor', doc['isActive']))   
+    populate_pixels(bDoorPos,  get_color_by_device('bDoor', doc['isActive']))
+
+# Data listener
+def watch_device_data(device):
+    doc = db.collection('devices').document(device).get().to_dict()
     
-    populate_pixels(lightsPos, get_color_by_device('lights', True))
-    populate_pixels(outletsPos, get_color_by_device('outlets', False))
-    populate_pixels(fDoorPos,  get_color_by_device('fDoor', True))
-    populate_pixels(bDoorPos,  get_color_by_device('bDoor', False))
+    if device == 'lights':
+        update_lights_matrix(doc)
+    elif device == 'outlets':
+        update_outlets_matrix(doc)
+    else:
+        update_doors_matrix(doc)
 
+while True:
+    update_sensors()
+    
+    for device in devices:
+        watch_device_data(device)        
 
-def watch_device_data():
-    doc = db.collection('devices').document('lights').get()
-    data = doc.to_dict()
-    print(data['isActive'])
-
-watch_device_data()
-sense.clear()
+    time.sleep(2)
