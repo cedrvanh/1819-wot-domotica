@@ -116,7 +116,6 @@ const renderGreeting = (name) => {
     element.innerHTML = greeting;
 }
 
-
 /*
  Auth
 */
@@ -145,8 +144,11 @@ const onLogOut = () => {
 firebase.auth().onAuthStateChanged(user => {
     if(user) {
         renderGreeting(user.displayName);
-    } else {
-       redirectToRoute('/login.html');
+
+        const token = getLocalStorageItem('uuid');
+        if(!token) {
+            redirectToRoute('/login.html')
+        }
     }
 })
   
