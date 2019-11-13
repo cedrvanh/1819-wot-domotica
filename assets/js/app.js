@@ -164,6 +164,7 @@ firebase.auth().onAuthStateChanged(user => {
         renderGreeting(user.displayName);
 
         const token = getLocalStorageItem('uuid');
+        console.log(token);
         if(!token) {
             redirectToRoute('/login.html')
         }
