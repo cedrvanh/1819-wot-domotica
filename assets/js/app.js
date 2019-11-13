@@ -146,7 +146,7 @@ const onLogin = async () => {
             // Set Unique User ID in LocalStorage
             setLocalStorageItem('uuid', res.user.uid);
             // Redirect to Home after succesful login
-            redirectToRoute('/1819-wot-domotica/');
+            redirectToRoute('/1819-wot-domotica');
         })
         .catch(err => {
             console.log(err);
