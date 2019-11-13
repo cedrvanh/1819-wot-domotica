@@ -51,26 +51,20 @@ const initDevices = () => {
         const elementNode = document.querySelector(`#${device}Toggle`);
         
         elementNode.addEventListener('click', (e) => {
-            updateDevice(device);
+            pushDeviceState(device);
         })
-    })
-}
 
-const pushDeviceState = (device, isActive) => {
-    const elementNode = document.querySelector(`#${device}Toggle`);
-
-    deviceRef.doc(device).update({
-        isActive: !isActive
+        updateDevice(device);
     })
 }
 
 const updateDevice = (device) => {
-    deviceRef.doc(device).get()
-        .then(doc => {
-            const { isActive } = doc.data();
-            updateDeviceClass(device, isActive);
-            updateDeviceLabel(device, isActive);
-        });
+    deviceRef.doc(device).onSnapshot(doc => {
+        const { isActive } = doc.data();
+
+        updateDeviceClass(device, isActive);
+        updateDeviceLabel(device, isActive);
+    })
 }
 
 const updateDeviceLabel = (device, isActive) => {
@@ -78,6 +72,7 @@ const updateDeviceLabel = (device, isActive) => {
     let status;  
 
     isActive ? status = 'ON' : status = 'OFF';
+    
     labelNode.innerHTML = status;
 }
 
@@ -89,6 +84,20 @@ const updateDeviceClass = (device, isActive) => {
     } else {
         elementNode.classList.remove('active');
     }
+}
+
+const pushDeviceState = (device) => {
+    let status;
+
+    deviceRef.doc(device).get()
+        .then(doc => {
+            const { isActive } = doc.data();
+            status = isActive;
+
+            deviceRef.doc(device).update({
+                isActive: !status
+            })
+        })
 }
 
 const renderGreeting = () => {
